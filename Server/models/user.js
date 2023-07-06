@@ -10,8 +10,7 @@ const userSchema = new Schema({
     },
     isManager: {
         type: Boolean,
-        require: true,
-        default: false
+        default: true
     },
     email: {
         type: String,
