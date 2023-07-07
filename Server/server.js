@@ -12,7 +12,10 @@ app.use(cors());
 
 const userCtrl =  require("./controllers/users.js")
 
-app.post("/users", userCtrl.create);
+app.post("/register", userCtrl.create);
+app.post("/login", userCtrl.login);
+
+
 
 app.use("/*", (req, res) => {
     res.send("Please try another Route.")
