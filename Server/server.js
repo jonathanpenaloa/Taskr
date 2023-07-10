@@ -14,7 +14,7 @@ const userCtrl =  require("./controllers/users.js")
 
 // token is valid 
 app.post("/register", userCtrl.create);
-app.post("/login", userCtrl.login);
+app.get("/login", userCtrl.login);
 
 
 
