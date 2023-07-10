@@ -22,7 +22,7 @@ const create = async (req, res) => {
         //save the new user to DB
         await newUser.save();
         // res with message of good registration 
-        res.status(200).json({ message: "user registration successfull", newUser });
+        res.status(200).json({ message: "user registration successfull"}, newUser);
         // catch err 
     } catch (err) {
         // res with err
@@ -50,7 +50,7 @@ const login = async (req, res) => {
         }
         /// make a token for the logged in user 
         // set expiration time for token
-        const token = jwt.sign({ userId: user._id }, process.env.SECRET, { expiresIn: "2h" });
+        const token = jwt.sign({ userId: user._id }, process.env.SECRET, { expiresIn: "24h" });
         // send the token back 
         res.status(200).json({ token })
     } catch(err) {

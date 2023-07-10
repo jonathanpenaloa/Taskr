@@ -3,6 +3,7 @@ import './App.css'
 import { Routes, Route, Navigate } from "react-router-dom"; 
 import LoginPage from './pages/LoginPage/LoginPage'
 import Register from './pages/Register/Register'
+import NavBar from './components/NavBar/NavBar';
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
   return (
     <>
       <div className='app'>
-        {/* NavBar */}
+        <NavBar />
         <Routes>
           <Route path="/" element={<Register/>} />
           <Route path="/login" element={<LoginPage/>} />

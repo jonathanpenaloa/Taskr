@@ -1,0 +1,27 @@
+.nav-bar {
+    display: flex;
+    width: 100vw;
+    justify-content: space-around;
+    overflow: hidden;
+    align-items: center;
+    height: 40px;
+    background-color: #212121;
+}
+
+.nav-bar a {
+    height: 100%;
+    color: aliceblue;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav-bar a:hover {
+    background-color: white;
+    text-decoration: none;
+    color: #212121;
+}
+.nav-bar a:active {
+    background-color: white;
+    text-decoration: none;
+}
