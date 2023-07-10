@@ -22,7 +22,7 @@ const create = async (req, res) => {
         //save the new user to DB
         await newUser.save();
         // res with message of good registration 
-        res.status(200).json({ message: "user registration successfull" });
+        res.status(200).json({ message: "user registration successfull", newUser });
         // catch err 
     } catch (err) {
         // res with err

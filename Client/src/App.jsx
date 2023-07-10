@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './App.css'
+import { Routes, Route, Navigate } from "react-router-dom"; 
 import LoginPage from './pages/LoginPage/LoginPage'
 import Register from './pages/Register/Register'
 
@@ -14,9 +15,12 @@ function App() {
 
   return (
     <>
-      <div>
-        <LoginPage/>
-        <Register/>
+      <div className='app'>
+        {/* NavBar */}
+        <Routes>
+          <Route path="/" element={<Register/>} />
+          <Route path="/login" element={<LoginPage/>} />
+        </Routes>
       </div>
     </>
   )

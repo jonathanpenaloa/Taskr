@@ -5,7 +5,9 @@ import { primarytContext } from '../../contexts/PrimaryContext';
 
 const Register = () => {
 
-    const {user, token } = useContext(primarytContext);
+    const { setUser } = useContext(primarytContext);
+
+    const [error, setErros] = useState('');
 
     const [formInputs, setFormInputs] = useState({
         name: "",
@@ -22,26 +24,36 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // send a req.body with the info from the form to db to register a new user
-        let registeredNewUser = await axios({
-            method: "POST",
-            url: "http://localhost:3003/register",
-            data: formInputs
+
+            try {
+
+                let { response } = await axios({
+                    method: "POST",
+                    url: "http://localhost:3003/register",
+                    data: formInputs
+                });
+                
+                setUser({
+                    email: formInputs.email,
+                    password: formInputs.password
+                });
+            } catch (err) {
+                console.log(err);
+                setErros(err.response.data.message);
+            }
+            // reset the form data
+            setFormInputs({
+            name: "",
+            email: "",
+            password: "",
         });
-
-        console.log(registeredNewUser);
-
-
-        // save the new user info user state var coming from Context 
-
-
-        // store the user token to local storage
 
     }
 
 
     return (
         <div className="register-form" >
+
             <form action="submit" onSubmit={handleSubmit}>
                 <h1>Sign Up</h1>
                 
@@ -70,6 +82,7 @@ const Register = () => {
                 
                 <button>register</button>
             </form>
+            { error ? <p>{error}</p> : "" }
         </div>
     );
 }

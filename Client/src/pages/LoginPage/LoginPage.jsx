@@ -6,9 +6,11 @@ const LoginPage = () => {
 
     const { setToken, setUser } = useContext(primarytContext);
 
+    /// store the local store == token 
+
     return (
         <div className="login-form">
-            <form action="submit">
+            <form autocomplete="off" action="submit">
                 <label>Email</label>
                 <input type="email" name="email"/>
                 <label>Password</label>
