@@ -1,6 +1,6 @@
 const Employee = require("../models/employee");
 
-const createEmployee =  async(req, res) => {
+const createEmployee = async(req, res) => {
     const employee = req.body;
     try {
         const response = await Employee.create(employee);
@@ -26,8 +26,14 @@ const createEmployee =  async(req, res) => {
     const deletedEmployee = await Employee.findOneAndDelete(employeeId);
     res.send(deletedEmployee); 
  }
+
+ const getAllEmployees = async (req, res) => {
+    const employeeList = await Employee.find({});
+    res.send(employeeList);
+ }
  module.exports = {
     createEmployee,
     updateEmployee,
-    deleteEmployee
+    deleteEmployee,
+    getAllEmployees
  }

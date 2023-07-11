@@ -12,8 +12,7 @@ app.use(express.json());
 app.use(cors());
 
 const userCtrl = require("./controllers/users.js");
-const { updateEmployee, createEmployee, deleteEmployee } =  require("./controllers/employee.js");
-
+const { updateEmployee, createEmployee, deleteEmployee, getAllEmployees } =  require("./controllers/employee.js");
 
 // token is valid 
 app.put("/verifySession", (req, res) => {
@@ -26,13 +25,14 @@ app.put("/verifySession", (req, res) => {
     }
 });
 
-//Users
+//Users 
 app.post("/register", userCtrl.create);
 app.put("/login", userCtrl.login);
 
 
 //Employee
-app.post("/employee", createEmployee);
+app.get("/allEmployees", getAllEmployees);
+app.post("/createEmployee", createEmployee);
 app.put("/employee/:employeeId", updateEmployee);
 app.delete("/employee/:employeeId", deleteEmployee);
 
