@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
 import axios from 'axios';
+import "./Register.css";
 import { useNavigate } from 'react-router-dom';
+import img from "../../assets/logo.png"
 
 import { primarytContext } from '../../contexts/PrimaryContext';
 
@@ -42,12 +44,13 @@ const Register = () => {
 
 
     return (
-        <div className="register-form" >
+        <div className="register-container">
 
-            <form action="submit" onSubmit={handleSubmit}>
+            <img src={img} alt="task" />
+            <form className="register-form" action="submit" onSubmit={handleSubmit}>
                 <h1>Sign Up</h1>
                 
-                <label htmlFor="">Full Name:</label>
+                <label>Full Name:</label>
                 <input 
                 type="text" 
                 name="name" 
@@ -55,7 +58,7 @@ const Register = () => {
                 onChange={handleInputChanges}
                 />
 
-                <label htmlFor="">Email:</label>
+                <label>Email:</label>
                 <input 
                 type="email" 
                 name='email' 
@@ -70,9 +73,9 @@ const Register = () => {
                 value={formInputs.password} 
                 onChange={handleInputChanges} required/>
                 
-                <button>register</button>
+                <button>REGISTER</button>
+                { error ? <p>{error}</p> : "" }
             </form>
-            { error ? <p>{error}</p> : "" }
         </div>
     );
 }
