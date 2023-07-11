@@ -11,7 +11,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const userCtrl =  require("./controllers/users.js")
+const userCtrl = require("./controllers/users.js");
+const { updateEmployee, createEmployee } =  require("./controllers/employee.js");
 
 
 // token is valid 
@@ -25,11 +26,14 @@ app.put("/verifySession", (req, res) => {
     }
 });
 
-
+//Users
 app.post("/register", userCtrl.create);
 app.put("/login", userCtrl.login);
 
 
+//Employee
+app.post("/employee", createEmployee);
+app.put("/employee/:employeeId", updateEmployee);
 
 app.use("/*", (req, res) => {
     res.send("Please try another Route.")

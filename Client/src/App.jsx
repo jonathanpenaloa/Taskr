@@ -9,7 +9,7 @@ import { primaryContext } from './contexts/PrimaryContext';
 
 function App() {
 
-const { token, setToken } = useContext(primaryContext);
+const { token, setToken, setUser, user } = useContext(primaryContext);
 
   useEffect(() => {
     let localToken = localStorage.getItem("userToken");
@@ -26,14 +26,11 @@ const { token, setToken } = useContext(primaryContext);
             Authorization: token
           }
         });
-        console.log(response);
+        setUser(response.data.user);
       }
       verifySession();
     }
-  }, [token])
-
-
-
+  }, [token]);
 
   return (
     <>

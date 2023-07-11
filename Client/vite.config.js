@@ -9,6 +9,7 @@ export default defineConfig({
       "/register": "http://localhost:3000",
       "/login": "http://localhost:3000",
       "/verifySession": "http://localhost:3000",
+      "/employee": "http://localhost:3000",
     }
   }
 })
