@@ -4,13 +4,15 @@ import { primarytContext } from '../../contexts/PrimaryContext';
 const LoginPage = () => {
 
 
-    const { setToken, setUser } = useContext(primarytContext);
+    const { setToken, user } = useContext(primarytContext);
 
     /// store the local store == token 
+    console.log(user);
 
     return (
         <div className="login-form">
-            <form autocomplete="off" action="submit">
+            <form action="submit">
+                <h1>Login</h1>
                 <label>Email</label>
                 <input type="email" name="email"/>
                 <label>Password</label>

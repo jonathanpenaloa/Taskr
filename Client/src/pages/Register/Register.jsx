@@ -1,53 +1,43 @@
-import React, { useContext, useState} from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 import { primarytContext } from '../../contexts/PrimaryContext';
 
-const Register = () => {
 
+const Register = () => {
+    
+    const navigate = useNavigate();
     const { setUser } = useContext(primarytContext);
 
     const [error, setErros] = useState('');
-
-    const [formInputs, setFormInputs] = useState({
-        name: "",
-        email: "",
-        password: "",
-    });
+    const [formInputs, setFormInputs] = useState({ name: "", email: "", password: "" });
 
     
     const handleInputChanges = (e) => {
-        setFormInputs({
-            ...formInputs, [e.target.name]: e.target.value
-        });
+        setFormInputs({ ...formInputs, [e.target.name]: e.target.value });
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
             try {
-
                 let { response } = await axios({
                     method: "POST",
-                    url: "http://localhost:3003/register",
+                    url: "/register",
                     data: formInputs
                 });
-                
                 setUser({
                     email: formInputs.email,
-                    password: formInputs.password
+                    name: formInputs.name
                 });
+
+                setFormInputs({ name: "", email: "", password: ""});
+                setErros("");
+                navigate("/login");
             } catch (err) {
                 console.log(err);
                 setErros(err.response.data.message);
             }
-            // reset the form data
-            setFormInputs({
-            name: "",
-            email: "",
-            password: "",
-        });
-
     }
 
 

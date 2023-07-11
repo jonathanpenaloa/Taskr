@@ -8,7 +8,9 @@ const PORT = process.env.PORT || 3002
  
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: "http://localhost:5173"
+}));
 
 const userCtrl =  require("./controllers/users.js")
 
