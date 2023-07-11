@@ -1,17 +1,38 @@
-import { useState } from 'react'
+import { useEffect, useContext } from 'react'
 import './App.css'
 import { Routes, Route, Navigate } from "react-router-dom"; 
 import LoginPage from './pages/LoginPage/LoginPage'
 import Register from './pages/Register/Register'
 import NavBar from './components/NavBar/NavBar';
+import axios from 'axios';
+import { primaryContext } from './contexts/PrimaryContext';
 
 function App() {
 
-  // have a user state to conditinally render the pages in the main app
+const { token, setToken } = useContext(primaryContext);
 
-  // pull the state from context
+  useEffect(() => {
+    let localToken = localStorage.getItem("userToken");
+    setToken(localToken);
+  });
 
-  // create a token state in a useEffect that checks if the token is good
+  useEffect(() => {
+    if (token) {
+    const verifySession = async () => {
+        const response = await axios({
+          method: "PUT",
+          url: "/verifySession",
+          headers: {
+            Authorization: token
+          }
+        });
+        console.log(response);
+      }
+      verifySession();
+    }
+  }, [token])
+
+
 
 
   return (

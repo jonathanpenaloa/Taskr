@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 
-export const primarytContext = createContext();
+export const primaryContext = createContext();
 
 
 const PrimaryContextProvider = ({ children }) => {
@@ -17,9 +17,9 @@ const PrimaryContextProvider = ({ children }) => {
     }
 
     return (
-        <primarytContext.Provider value={contextState} >
+        <primaryContext.Provider value={contextState} >
             {children}
-        </primarytContext.Provider>
+        </primaryContext.Provider>
     );
 }
 

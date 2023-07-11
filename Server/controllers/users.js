@@ -36,7 +36,6 @@ const login = async (req, res) => {
 
         // Find user obj from DB  by email 
         const user = await User.findOne({ email: email });
-
         // no user with email found
         if(!user) {
             return res.status(401).json({ message: "Sign up failed, email is not registerd"})
@@ -44,14 +43,17 @@ const login = async (req, res) => {
 
         // compre hashedpass in db with password user entered
         const validPassword = await bcrypt.compare(password, user.password);
-
+        
         if(!validPassword) {
             return res.status(401).json({ message: "Password is incorrect" })
         }
         /// make a token for the logged in user 
         // set expiration time for token
-        const token = jwt.sign({ userId: user._id }, process.env.SECRET, { expiresIn: "24h" });
+        
+        const token = jwt.sign({ user }, process.env.SECRET, { expiresIn: "24h" });
         // send the token back 
+        delete user.password;
+        console.log(user);
         res.status(200).json({ token })
     } catch(err) {
         res.status(500).json({ message: "Login Failed" });

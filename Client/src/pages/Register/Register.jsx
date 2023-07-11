@@ -4,13 +4,13 @@ import "./Register.css";
 import { useNavigate } from 'react-router-dom';
 import img from "../../assets/logo.png"
 
-import { primarytContext } from '../../contexts/PrimaryContext';
+import { primaryContext } from '../../contexts/PrimaryContext';
 
 
 const Register = () => {
     
     const navigate = useNavigate();
-    const { setUser } = useContext(primarytContext);
+    const { setUser } = useContext(primaryContext);
 
     const [error, setErros] = useState('');
     const [formInputs, setFormInputs] = useState({ name: "", email: "", password: "" });

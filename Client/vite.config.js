@@ -7,6 +7,8 @@ export default defineConfig({
   server: {
     proxy: {
       "/register": "http://localhost:3000",
+      "/login": "http://localhost:3000",
+      "/verifySession": "http://localhost:3000",
     }
   }
 })
