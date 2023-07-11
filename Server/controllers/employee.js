@@ -1,6 +1,5 @@
 const Employee = require("../models/employee");
 
-
 const createEmployee =  async(req, res) => {
     const employee = req.body;
     try {
@@ -15,13 +14,20 @@ const createEmployee =  async(req, res) => {
     const employeeId = req.params.employeeId;
     const changesForEmployee = req.body;
     try {
-        const newEmployeeInfo = await Employee.findByIdAndUpdate(employeeId, changesForEmployee, { new : true });
-        res.send(newEmployeeInfo);
+        const updatedEmployeeInfo = await Employee.findByIdAndUpdate(employeeId, changesForEmployee, { new : true });
+        res.send(updatedEmployeeInfo);
     } catch(err) {
         res.send("employee was not updated").status(500);
     }
  }
+
+ const deleteEmployee = async (req, res) => {
+    const employeeId = req.params.employeeId;
+    const deletedEmployee = await Employee.findOneAndDelete(employeeId);
+    res.send(deletedEmployee); 
+ }
  module.exports = {
     createEmployee,
-    updateEmployee
+    updateEmployee,
+    deleteEmployee
  }

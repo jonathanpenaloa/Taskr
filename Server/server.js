@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cors());
 
 const userCtrl = require("./controllers/users.js");
-const { updateEmployee, createEmployee } =  require("./controllers/employee.js");
+const { updateEmployee, createEmployee, deleteEmployee } =  require("./controllers/employee.js");
 
 
 // token is valid 
@@ -34,6 +34,7 @@ app.put("/login", userCtrl.login);
 //Employee
 app.post("/employee", createEmployee);
 app.put("/employee/:employeeId", updateEmployee);
+app.delete("/employee/:employeeId", deleteEmployee);
 
 app.use("/*", (req, res) => {
     res.send("Please try another Route.")
