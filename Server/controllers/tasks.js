@@ -23,8 +23,14 @@ const updateTask = async (req, res) => {
     }
 }
 
-const deleteTask = () => {
-    
+const deleteTask = async (req, res) => {
+    const {taskId} = req.params;
+    try {
+        const deltedTaskFromDB = await Tasks.findByIdAndDelete(taskId);
+        res.json(deltedTaskFromDB);
+    } catch(err) {
+        res.status(404).json({message : "Task was not deleted"});
+    }
 }
 const getAllTask = () => {
 
@@ -32,5 +38,6 @@ const getAllTask = () => {
 
 module.exports = {
     createTask,
-    updateTask
+    updateTask,
+    deleteTask
 }
