@@ -1,0 +1,39 @@
+.team-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.team-card:hover {
+    background-color: aliceblue;
+    cursor: pointer;
+    border-radius: 1px solid black;
+}
+/*   
+  .team-image {
+    width: auto;
+    height: 150px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    align-self: center;
+  } */
+  
+  .team-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .member-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .member-list li {
+    margin-bottom: 5px;
+  }
