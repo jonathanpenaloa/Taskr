@@ -32,12 +32,19 @@ const deleteTask = async (req, res) => {
         res.status(404).json({message : "Task was not deleted"});
     }
 }
-const getAllTask = () => {
 
+const getAllTask = async (req, res) => {
+    try {
+        const allTaskFromDB = await Tasks.find({}).populate("assignTo").sort("-createAt");
+        res.json(allTaskFromDB);
+    } catch(err) {
+        res.status(404).json({ message: "Did not find any Task" });
+    }
 }
 
 module.exports = {
     createTask,
     updateTask,
-    deleteTask
+    deleteTask,
+    getAllTask,
 }

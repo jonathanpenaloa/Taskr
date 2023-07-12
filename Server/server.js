@@ -14,7 +14,7 @@ app.use(cors());
 const userCtrl = require("./controllers/users.js");
 
 // EMPLOYEE CONTROLLERS
-const { updateEmployee, createEmployee, deleteEmployee, getAllEmployees } =  require("./controllers/employee.js");
+const { updateEmployee, createEmployee, deleteEmployee, getAllEmployees } = require("./controllers/employee.js");
 
 
 // TEAMS CONTROLLERS 
@@ -22,7 +22,7 @@ const { createTeam, updateTeam, deleteTeam, getAllTeams } = require("./controlle
 
 
 // TASKS CONTROLLERS
-const { createTask, updateTask, deleteTask } = require("./controllers/tasks.js");
+const { createTask, updateTask, deleteTask, getAllTask } = require("./controllers/tasks.js");
 
 // token is valid 
 app.put("/verifySession", (req, res) => {
@@ -55,16 +55,17 @@ app.get("/allTeams", getAllTeams);
 // Task 
 app.post("/task", createTask);
 app.put("/task/:taskId", updateTask);
-app.delete("/task/:taskId", deleteTask)
+app.delete("/task/:taskId", deleteTask);
+app.get("/task", getAllTask);
 
 
 app.use("/*", (req, res) => {
-    res.send("Please try another Route.")
+    res.send("Please try another Route.");
 });
 
 
 
 
 app.listen(PORT, () => {
-    console.log(`Listening on ${PORT}`)
-})
+    console.log(`Listening on ${PORT}`);
+});
