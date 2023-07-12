@@ -11,12 +11,20 @@ const createTask = async (req, res) => {
     }
 }
 
-
-const updateTask = () => {
-
+const updateTask = async (req, res) => {
+    const {taskId} = req.params
+    const changedTaskInfo = req.body;
+    try {
+        const updatedTaskFromDB = await Tasks.findByIdAndUpdate(taskId, changedTaskInfo, { new : true })
+        .populate("assignTo");
+        res.json(updatedTaskFromDB);
+    } catch(err) {
+        res.status(404).json({ message: "Task was noy updated" });
+    }
 }
-const deleteTask = () => {
 
+const deleteTask = () => {
+    
 }
 const getAllTask = () => {
 
@@ -24,4 +32,5 @@ const getAllTask = () => {
 
 module.exports = {
     createTask,
+    updateTask
 }

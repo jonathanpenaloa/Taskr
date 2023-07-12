@@ -22,7 +22,7 @@ const { createTeam, updateTeam, deleteTeam, getAllTeams } = require("./controlle
 
 
 // TASKS CONTROLLERS
-const { createTask } = require("./controllers/tasks.js");
+const { createTask, updateTask } = require("./controllers/tasks.js");
 
 // token is valid 
 app.put("/verifySession", (req, res) => {
@@ -54,11 +54,14 @@ app.get("/allTeams", getAllTeams);
 
 // Task Routes
 app.post("/task", createTask);
+app.put("/task/:taskId", updateTask);
 
 
 app.use("/*", (req, res) => {
     res.send("Please try another Route.")
-})
+});
+
+
 
 
 app.listen(PORT, () => {
