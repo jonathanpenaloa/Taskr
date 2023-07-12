@@ -12,7 +12,7 @@ const taskSchema = new Schema({
         emum: ["started", 'stuck', "completed"],
         default: "Started",
     },
-    assingTo: {
+    assignTo: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: "Employee",
         require: true,

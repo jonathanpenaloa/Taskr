@@ -4,7 +4,6 @@ const createEmployee = async(req, res) => {
     const employee = req.body;
     try {
         const response = await Employee.create(employee)
-        .populate("hiredBy").sort("-createAt").exec();
         res.send(response)
     } catch(err) {
         res.send().status(500).json("Employee was not added")

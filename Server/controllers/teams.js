@@ -14,9 +14,7 @@ const createTeam = async (req, res) => {
   
       const team = await Teams.create({ name, members });
 
-      const populatedTeam = await team.populate("members").sort({ createAt: -1});
-
-      res.json(populatedTeam);
+      res.json(team);
 
     } catch (err) {
 

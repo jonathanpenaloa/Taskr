@@ -22,7 +22,7 @@ const { createTeam, updateTeam, deleteTeam, getAllTeams } = require("./controlle
 
 
 // TASKS CONTROLLERS
-// const { createTask } = require("./controllers/tasks.js");
+const { createTask } = require("./controllers/tasks.js");
 
 // token is valid 
 app.put("/verifySession", (req, res) => {
@@ -53,7 +53,7 @@ app.delete('/teams/:teamId', deleteTeam);
 app.get("/allTeams", getAllTeams);
 
 // Task Routes
-// app.post("/task", createTask);
+app.post("/task", createTask);
 
 
 app.use("/*", (req, res) => {
