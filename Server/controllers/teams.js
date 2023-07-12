@@ -28,16 +28,16 @@ const getAllTeams = async (req, res) => {
 }
 
 const updateTeam = async (req, res) => {
-    const { teamId } = req.params;
+    const teamId  = req.params.teamId;
     const newTeamData = req.body;
-  
-    try {
-      const updatedTeamFromDB = await Teams.findByIdAndUpdate(teamId, newTeamData, { new: true }).populate("members");
-  
-      if (!updatedTeamFromDB) {
-        return res.status(404).json({ message: "Team not found" });
-      }
-  
+    
+  try {
+    const updatedTeamFromDB = await Teams.findByIdAndUpdate(teamId, newTeamData, { new: true }).populate("members");
+    
+    if (!updatedTeamFromDB) {
+      return res.status(404).json({ message: "Team not found" });
+    }
+    
       res.json(updatedTeamFromDB);
       
     } catch (err) {

@@ -47,10 +47,10 @@ app.put("/employee/:employeeId", updateEmployee);
 app.delete("/employee/:employeeId", deleteEmployee);
 
 // Team 
-app.post("/createTeam", createTeam);
-app.put("/updateTeam/:teamId", updateTeam);
+app.post("/teams", createTeam);
+app.put("/teams/:teamId", updateTeam);
 app.delete('/teams/:teamId', deleteTeam);
-app.get("/allTeams", getAllTeams);
+app.get("/teams", getAllTeams);
 
 // Task 
 app.post("/task", createTask);
