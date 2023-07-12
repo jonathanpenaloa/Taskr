@@ -6,6 +6,7 @@ const teamSchema = new Schema({
     name: {
         type: String,
         require: true,
+        unique: true
     },
     members: [
         {
