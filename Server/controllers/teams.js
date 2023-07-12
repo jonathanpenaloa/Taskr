@@ -20,8 +20,21 @@ const getAllTeams = (req, res) => {
 
 }
 
-const updateTeams = (req, res) => {
+const updateTeam =  async (req, res) => {
+    const { teamId } = req.params;
+    const newTeamData = req.body;
 
+    try {
+        const updatedTeamFromDB = await Teams.findByIdAndUpdate(teamId, newTeamData, { new: true });
+        
+        if(!updatedTeamFromDB) {
+            res.status(404).json({ message: "Team not found" });
+        }
+
+        res.json(updatedTeamFromDB);
+    } catch(err) {
+        res.status(500).json({ message: "Error updating Team" });
+    }
 }
 
 const deleteTeam = (req, res) => {
@@ -29,5 +42,6 @@ const deleteTeam = (req, res) => {
 }
 
 module.exports = {
-    createTeam
+    createTeam,
+    updateTeam
 }

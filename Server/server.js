@@ -13,7 +13,7 @@ app.use(cors());
 
 const userCtrl = require("./controllers/users.js");
 const { updateEmployee, createEmployee, deleteEmployee, getAllEmployees } =  require("./controllers/employee.js");
-const { createTeam  } = require("./controllers/teams.js");
+const { createTeam, updateTeam  } = require("./controllers/teams.js");
 
 // token is valid 
 app.put("/verifySession", (req, res) => {
@@ -39,6 +39,7 @@ app.delete("/employee/:employeeId", deleteEmployee);
 
 // Team 
 app.post("/createTeam", createTeam);
+app.put("/createTeam/:teamId", updateTeam);
 
 app.use("/*", (req, res) => {
     res.send("Please try another Route.")
