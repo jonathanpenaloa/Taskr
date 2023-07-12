@@ -28,7 +28,7 @@ const createEmployee = async(req, res) => {
  }
 
  const getAllEmployees = async (req, res) => {
-    const employeeList = await Employee.find({});
+    const employeeList = await Employee.find({}).populate("hiredBy").sort("-createAt").exec();
     res.send(employeeList);
  }
  module.exports = {
