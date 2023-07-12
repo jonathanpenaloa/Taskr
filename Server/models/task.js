@@ -8,14 +8,20 @@ const taskSchema = new Schema({
         require: true,
     }, 
     process: {
-        type: Boolean,
-        default: false
+        type: String,
+        emum: ["started", 'stuck', "completed"],
+        default: "Started",
     },
     assingTo: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: "Employee",
         require: true,
-    }
+    },
+    priority: {
+        type: String,
+        enum: ["low", "medium", "high"],
+        default: "medium",
+    },
 }, {timestamps: true});
 
 module.exports = mongoose.model("Task", taskSchema);

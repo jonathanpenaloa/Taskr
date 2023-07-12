@@ -20,6 +20,10 @@ const { updateEmployee, createEmployee, deleteEmployee, getAllEmployees } =  req
 // TEAMS CONTROLLERS 
 const { createTeam, updateTeam, deleteTeam, getAllTeams } = require("./controllers/teams.js");
 
+
+// TASKS CONTROLLERS
+// const { createTask } = require("./controllers/tasks.js");
+
 // token is valid 
 app.put("/verifySession", (req, res) => {
     const token = req.header("Authorization");
@@ -46,7 +50,11 @@ app.delete("/employee/:employeeId", deleteEmployee);
 app.post("/createTeam", createTeam);
 app.put("/updateTeam/:teamId", updateTeam);
 app.delete('/teams/:teamId', deleteTeam);
-app.get("/allTeams", getAllTeams)
+app.get("/allTeams", getAllTeams);
+
+// Task Routes
+// app.post("/task", createTask);
+
 
 app.use("/*", (req, res) => {
     res.send("Please try another Route.")
