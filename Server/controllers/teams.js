@@ -16,8 +16,9 @@ const createTeam = async (req, res) => {
     }
 }
 
-const getAllTeams = (req, res) => {
-
+const getAllTeams = async (req, res) => {
+    const teamList = await Teams.find({});
+    res.send(teamList);
 }
 
 const updateTeam =  async (req, res) => {
@@ -56,5 +57,6 @@ const deleteTeam = async (req, res) => {
 module.exports = {
     createTeam,
     updateTeam,
-    deleteTeam
+    deleteTeam,
+    getAllTeams
 }

@@ -18,7 +18,7 @@ const { updateEmployee, createEmployee, deleteEmployee, getAllEmployees } =  req
 
 
 // TEAMS CONTROLLERS 
-const { createTeam, updateTeam, deleteTeam  } = require("./controllers/teams.js");
+const { createTeam, updateTeam, deleteTeam, getAllTeams } = require("./controllers/teams.js");
 
 // token is valid 
 app.put("/verifySession", (req, res) => {
@@ -46,6 +46,7 @@ app.delete("/employee/:employeeId", deleteEmployee);
 app.post("/createTeam", createTeam);
 app.put("/updateTeam/:teamId", updateTeam);
 app.delete('/teams/:teamId', deleteTeam);
+app.get("/allTeams", getAllTeams)
 
 app.use("/*", (req, res) => {
     res.send("Please try another Route.")
