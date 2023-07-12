@@ -37,11 +37,24 @@ const updateTeam =  async (req, res) => {
     }
 }
 
-const deleteTeam = (req, res) => {
+const deleteTeam = async (req, res) => {
+    const { teamId } = req.params; 
 
+    try {
+      const deletedTeamFromDB = await Teams.findByIdAndDelete(teamId);
+  
+      if (!deletedTeamFromDB) {
+        return res.status(404).json({ message: "Team not found" });
+      }
+  
+      res.json(deletedTeamFromDB);
+    } catch (error) {
+      res.status(500).json({ message: "Error deleting team" });
+    }
 }
 
 module.exports = {
     createTeam,
-    updateTeam
+    updateTeam,
+    deleteTeam
 }
