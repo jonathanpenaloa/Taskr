@@ -30,7 +30,16 @@ const Home = () => {
 
     return (
         <main >
-            <div><h1>Dashboard</h1></div>
+            <div className='team-form'>
+                <h1>Create New Team</h1>
+                <section>
+                    <form  action="submit">
+                        <label htmlFor="">Use Fun Name</label>
+                        <input type="text" name='name' />
+                        <button>Make team</button>
+                    </form>
+                </section>
+            </div>
             <div className="teams">
              {teamCardsJsx}
             </div>

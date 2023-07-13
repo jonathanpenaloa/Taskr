@@ -10,10 +10,10 @@ form {
 input {
     padding: 10px;
     margin-bottom: 10px;
-    width: 300px;
+    width: auto;
     font-size: 16px;
     border-radius: 8px;
-    border: none;
+    border: 1px solid;
     outline: none;
 }
 
@@ -21,7 +21,7 @@ input {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(246, 248, 250);
+    background-color: white;
     border-radius: 10px;
 }
 
