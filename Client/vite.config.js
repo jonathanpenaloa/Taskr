@@ -6,11 +6,11 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/register": "http://localhost:3000",
-      "/login": "http://localhost:3000",
-      "/verifySession": "http://localhost:3000",
-      "/employee": "http://localhost:3000",
-      "/teams": "http://localhost:3000",
+      "/register": "https://taskrapi.onrender.com",
+      "/login": "https://taskrapi.onrender.com",
+      "/verifySession": "https://taskrapi.onrender.com",
+      "/employee": "https://taskrapi.onrender.com",
+      "/teams": "https://taskrapi.onrender.com",
     }
   }
 })
