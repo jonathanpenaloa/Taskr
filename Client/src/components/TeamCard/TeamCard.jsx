@@ -10,7 +10,7 @@ const TeamCard = ({team}) => {
     const {setSelectedTeam} = useContext(primaryContext)
 
     const teamAvatar = team.members.map((memeber) => {
-        return <Avatar key={memeber._id} >{memeber.name}</Avatar>
+        return <Avatar style={{backgroundColor: "orange"}} key={memeber._id} >{memeber.name}</Avatar>
     });
 
     const handleTeamClick = () => {

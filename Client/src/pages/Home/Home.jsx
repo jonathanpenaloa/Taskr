@@ -30,12 +30,13 @@ const Home = () => {
 
     return (
         <main >
-            Home Page
+            <div><h1>Dashboard</h1></div>
             <div className="teams">
-            {teamCardsJsx}
-
+             {teamCardsJsx}
             </div>
+            <div className='team-selected'>
             <TeamDisplay />
+            </div>
             {/* /// Team Component */}
             {/* Employee Component  */}
             {/* Task component */}

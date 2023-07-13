@@ -9,18 +9,11 @@
 }
 
 .team-card:hover {
-    background-color: aliceblue;
+    background-color: rgb(160, 65, 250);
     cursor: pointer;
     border-radius: 1px solid black;
+    color: aliceblue;
 }
-/*   
-  .team-image {
-    width: auto;
-    height: 150px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    align-self: center;
-  } */
   
   .team-name {
     font-size: 18px;

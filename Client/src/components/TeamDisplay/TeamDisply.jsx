@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { primaryContext } from '../../contexts/PrimaryContext';
 import axios from 'axios';
+import "./TeamDisplay.css"
 
 const TeamDisplay = () => {
 
@@ -23,6 +24,7 @@ const TeamDisplay = () => {
             });
             console.log(data);
             setSelectedTeam(data);
+            setNewMemeberName('');
         } catch(err){
             console.log(err);
         }
@@ -34,10 +36,15 @@ const TeamDisplay = () => {
             <h1>
             {selectedTeam.name}        
             </h1> 
-            <div>
+            <form onSubmit={handleSubmit} >
+                <label>Add Team Member</label>
+                <input value={newMemberName} onChange={(e) => setNewMemeberName(e.target.value)} type="text" name="name" required />
+                <button>submit</button>
+            </form>
+            <div className='team-names' >
                 {selectedTeam.members.map((memeber) => {
                     return (
-                        <div key={memeber._id}>
+                        <div className='name-button' key={memeber._id}>
                             <div>
                                 {memeber.name}
                             </div>
@@ -46,10 +53,6 @@ const TeamDisplay = () => {
                     );
                 })}
             </div>
-            <form onSubmit={handleSubmit} >
-                <input value={newMemberName} onChange={(e) => setNewMemeberName(e.target.value)} type="text" name="name" id="" />
-                <button>submit</button>
-            </form>
         </div>
     );
 }

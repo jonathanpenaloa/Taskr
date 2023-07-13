@@ -1,0 +1,30 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 200px;
+    align-items: center;
+    gap: 10px;
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 300px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+
+.team-selected {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(246, 248, 250);
+    border-radius: 10px;
+}
+
+.name-button {
+    display: grid;
+}
