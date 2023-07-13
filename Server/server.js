@@ -18,7 +18,7 @@ const { updateEmployee, createEmployee, deleteEmployee, getAllEmployees } = requ
 
 
 // TEAMS CONTROLLERS 
-const { createTeam, updateTeam, deleteTeam, getAllTeams } = require("./controllers/teams.js");
+const { createTeam, updateTeam, deleteTeam, getAllTeams, addMember } = require("./controllers/teams.js");
 
 
 // TASKS CONTROLLERS
@@ -41,8 +41,8 @@ app.put("/login", userCtrl.login);
 
 
 //Employee
-app.get("/allEmployees", getAllEmployees);
-app.post("/createEmployee", createEmployee);
+app.get("/employee", getAllEmployees);
+app.post("/employee", createEmployee);
 app.put("/employee/:employeeId", updateEmployee);
 app.delete("/employee/:employeeId", deleteEmployee);
 
@@ -51,6 +51,7 @@ app.post("/teams", createTeam);
 app.put("/teams/:teamId", updateTeam);
 app.delete('/teams/:teamId', deleteTeam);
 app.get("/teams", getAllTeams);
+app.put('/teams/addMember/:teamId', addMember);
 
 // Task 
 app.post("/task", createTask);

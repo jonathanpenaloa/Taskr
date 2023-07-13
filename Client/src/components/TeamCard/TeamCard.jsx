@@ -1,19 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import "./TeamCard.css";
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
-import axios from 'axios';
+import { primaryContext } from '../../contexts/PrimaryContext';
 
 
-const TeamCard = () => {
+const TeamCard = ({team}) => {
 
+    const {setSelectedTeam} = useContext(primaryContext)
+
+    const teamAvatar = team.members.map((memeber) => {
+        return <Avatar key={memeber._id} >{memeber.name}</Avatar>
+    });
+
+    const handleTeamClick = () => {
+        setSelectedTeam(team);
+    }   
 
     return (
-        <div className='team-card'>
-            <h2 className='team-name'>Team Z</h2>
+        <div className='team-card' onClick={handleTeamClick} >
+            <h2 className='team-name'>{team.name}</h2>
             <AvatarGroup max={4}>
-                <Avatar alt="name" src="/logo.png" />
-                <Avatar alt="name" src="/logo.png" />
+                {teamAvatar}
             </AvatarGroup>
         </div>
     );

@@ -1,5 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { primaryContext } from '../../contexts/PrimaryContext';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import "./LoginPage.css";
 
@@ -7,7 +8,7 @@ const LoginPage = () => {
 
 
     const { setToken } = useContext(primaryContext);
-
+    const navigate = useNavigate();
     const [error, setErros] = useState('');
     const [formInputs, setFormInputs] = useState({ email: "", password: "" });
 
@@ -36,7 +37,7 @@ const LoginPage = () => {
                 setToken(jwtToken);
 
                 localStorage.setItem("userToken", jwtToken);
-
+                navigate("/Home");
             } catch (err) {
                 console.log(err);
                 setErros(err.response.data.message);

@@ -7,13 +7,19 @@ const PrimaryContextProvider = ({ children }) => {
 
     const [token, setToken] = useState();
     const [user, setUser] = useState();
+    const [teams, setTeams] = useState([]);
+    const [selectedTeam, setSelectedTeam] = useState();
 
 
     const contextState = {
         token, 
         setToken,
         user,
-        setUser
+        setUser,
+        teams,
+        setTeams,
+        selectedTeam,
+        setSelectedTeam
     }
 
     return (

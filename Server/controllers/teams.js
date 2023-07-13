@@ -1,7 +1,7 @@
 const Teams = require("../models/team");
 const Employee = require("../models/employee");
 
-
+const userId = "64ad9ca041a6ae5df30bcd82"
 const createTeam = async (req, res) => {
     const { name, members } = req.body;
   
@@ -45,6 +45,31 @@ const updateTeam = async (req, res) => {
     }
   };
 
+const addMember = async (req, res) => {
+    const teamId  = req.params.teamId;
+    const newMemberName = req.body.name;
+
+    if(!newMemberName) {
+      return res.send("Name was not in request body");
+    }
+    
+  try {
+    const teamFromDb = await Teams.findById(teamId).populate("members");
+    // make new emplyee in employee colelction
+    const newEmployee = await (await Employee.create({ name: newMemberName, hiredBy: userId })).populate('hiredBy')
+    // we will get the id of the new member from db
+    // teamFromDb.memebers.push(thatId)
+    teamFromDb.members.push(newEmployee._id);
+
+    await teamFromDb.save()
+    console.log(newEmployee);
+    //teamFromDb.save();
+    res.status(200).json(teamFromDb);
+    } catch(err) {
+      res.status(500).json({message: "Failed to add"});
+    }
+  };
+
 const deleteTeam = async (req, res) => {
     const { teamId } = req.params; 
 
@@ -65,5 +90,6 @@ module.exports = {
     createTeam,
     updateTeam,
     deleteTeam,
-    getAllTeams
+    getAllTeams,
+    addMember
 }
