@@ -1,5 +1,5 @@
 import React from 'react';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import TeamCard from '../../components/TeamCard/TeamCard';
 import { primaryContext } from '../../contexts/PrimaryContext';
 import TeamDisplay from '../../components/TeamDisplay/TeamDisply';
@@ -11,6 +11,7 @@ const Home = () => {
 
     const { teams, setTeams} = useContext(primaryContext);
 
+    const [teamName, setTeamName] = useState('');
 
     useEffect(() => {
         const getAllTeamFromDB = async () => {
@@ -25,21 +26,21 @@ const Home = () => {
 
     const teamCardsJsx = teams.map((team) => {
         return <TeamCard key={team._id} team={team} />
-    })
-    
+    });
+
 
     return (
         <main >
-            <div className='team-form'>
+            {/* <div className='team-form'>
                 <h1>Create New Team</h1>
                 <section>
-                    <form  action="submit">
+                    <form action="submit">
                         <label htmlFor="">Use Fun Name</label>
-                        <input type="text" name='name' />
-                        <button>Make team</button>
+                        <input type="text" value={teamName}  onChange={(e) => setTeamName(e.target.value)} required />
+                        <button onClick={handleSubmit}>Make team</button>
                     </form>
                 </section>
-            </div>
+            </div> */}
             <div className="teams">
              {teamCardsJsx}
             </div>
